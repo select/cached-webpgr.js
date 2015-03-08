@@ -22,7 +22,9 @@ In this example I cache jQuery and a local file that is dependent on jQuery. On 
 
 ## Motivation
 
-My feeling was that caching in localStorage should be a simple and straight forward. However I could not find a simple library without depencies that fulfilled this so I created this mini project ,for documentation and learning.
+My feeling was that caching in localStorage should be a simple and straight forward. However I could not find a simple library without depencies that fulfilled this so I created this mini project, for documentation and learning.
+
+When I tried to use [basket.js](http://addyosmani.github.io/basket.js/) it unfortunately had some dependency, otherwise it is probabley more advanced (and larger) than this script. 
 
 ## Installation
 
