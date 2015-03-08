@@ -26,7 +26,9 @@ My feeling was that caching in localStorage should be a simple and straight forw
 
 ## Installation
 
-Copy the code from `chached-webpgr.min.js` (not updloaded yet) into your .html file (loading it from a server would make it slower!) and use the code from the Code Example to load your scripts. Be aware of depencies, and use the callbacks for dependent scripts like in the example.
+Copy the code from `chached-webpgr.min.js` (not updloaded yet) into your .html file (loading it from a server would make it slower!) and use the code from the [Code Example](#code-example) to load your scripts. Be aware of depencies, and use the callbacks for dependent scripts like in the example.
+
+This code __will only work on a server__, file:// is not supported.
 
 ## API Reference
 
