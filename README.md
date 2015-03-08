@@ -2,10 +2,20 @@
 
 This tiny library uses the Web Storage (localStorage) to cache JavaScrip files. Cached files will be loaded much faster than requesting them from a server (even local ones). <br>
   My test showed: 
+Loading jQuery from CDN  | 268ms
+Loading jQuery from localStorage  | 47ms
+
+The library is so simple that you can read and understand all of its code!
 
 ## Code Example
 
-Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
+In this example I cache jquery, on the first load it will be loaded from the provided url and on the second load it will be loaded from the localStorage. Changing the version string will cause the cache to be cleared (1st load) and a new version to be loaded from the sever (2nd load).
+
+```javascript
+  requireScript('jquery', '1.11.2', 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js', function(){
+    requireScript('examplejs', '0.0.3', 'example.js');
+  });
+```
 
 ## Motivation
 
