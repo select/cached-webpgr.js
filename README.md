@@ -24,6 +24,8 @@ In this example I cache jQuery and a local file that is dependent on jQuery. On 
 
 My feeling was that caching in localStorage should be a simple and straight forward. However I could not find a simple library without depencies that fulfilled this so I created this mini project ,for documentation and learning.
 
+When I tried to use (basket.js)[http://addyosmani.github.io/basket.js/] it unfortunately had some dependency, otherwise it is probabley more advanced (and larger) than this script. 
+
 ## Installation
 
 Copy the code from `chached-webpgr.min.js` (not updloaded yet) into your .html file (loading it from a server would make it slower!) and use the code from the [Code Example](#code-example) to load your scripts. Be aware of depencies, and use the callbacks for dependent scripts like in the example.
