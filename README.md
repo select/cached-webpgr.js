@@ -4,9 +4,9 @@ This tiny library uses the Web Storage (localStorage) to cache JavaScrip files. 
   My test showed: 
   
 | | |
-|-|-|
-|Loading jQuery from CDN  | 268ms|
-|Loading jQuery from localStorage  | 47ms
+|---|---|
+|Loading jQuery from CDN  | __268ms__|
+|Loading jQuery from localStorage  | __47ms__ |
 
 The library is so simple that you can read and understand all of its code!
 
@@ -17,16 +17,16 @@ The library is so simple that you can read and understand all of its code!
     requireScript('examplejs', '0.0.3', 'example.js');
   });
 ```
-In this example I cache jQuery and a local file that is dependent on jQuery. On the first load it will be loaded from the provided url and on the second load it will be loaded from the localStorage. Changing the version string will cause the cache to be cleared (1st load) and a new version to be loaded from the sever (2nd load). Since the `example.js` is dependen on jQuery I load it in withing a callback call that is triggered after loading jQuery.
+In this example I cache jQuery and a local file that is dependent on jQuery. On the first load it will be loaded from the provided URL and on the second load it will be loaded from the localStorage. Changing the version string will cause the cache to be cleared (1st load) and a new version to be loaded from the sever (2nd load). Since the `example.js` is dependen on jQuery I load it in withing a callback call that is triggered after loading jQuery.
 
 
 ## Motivation
 
-My feeling was that caching in localStorage should be a simple and straight forward. However I could not find a simple library without depencies that fulfilled this so I created this mini project, rather for documentation and learning.
+My feeling was that caching in localStorage should be a simple and straight forward. However I could not find a simple library without depencies that fulfilled this so I created this mini project ,for documentation and learning.
 
 ## Installation
 
-Copy the code from `chached-webpgr.min.js` into your .html file (loading it from a server would make it slower!) and use the code from the Code Example to load your scripts. Be aware of depencies, and use the callbacks for dependent scripts like in the example.
+Copy the code from `chached-webpgr.min.js` (not updloaded yet) into your .html file (loading it from a server would make it slower!) and use the code from the Code Example to load your scripts. Be aware of depencies, and use the callbacks for dependent scripts like in the example.
 
 ## API Reference
 
@@ -39,8 +39,8 @@ _loadScript(url, name, version, callback)
 _injectScript(content, name, version, callback)
 _cacheScript(name, version, url)
 ```
-Please check the code to learn how they work (they are very short!).
+Please read the code to learn how they work (they are very short!).
 
 ## License
 
-A short snippet describing the license (MIT, Apache, etc.)
+cached-webpgr.js is released under the [MIT License](http://webpgr.mit-license.org/).
