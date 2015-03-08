@@ -20,7 +20,7 @@
  * in the localStorage under the provided name. The stored script will be wrapped like in this example:
  * `{content: '// scrip content $(document).ready(...)', version: '1.02.03'}`
  * @param {string} name localStorage identifier; shoud be the same as on the server-side
- * @param {string} url `path/to/script.js`; shoud be the same as on the server-side
+ * @param {string} url `path/to/script.js`; shoud be on the same server (or with remove with CORS header access-control-allow-origin:*)
  */
 function _cacheScript(name, version, url) {
     var xmlhttp = new XMLHttpRequest(); // code for IE7+, Firefox, Chrome, Opera, Safari
@@ -41,7 +41,7 @@ function _cacheScript(name, version, url) {
   }
   /**
    * ##_loadScript
-   * For loading external scripts (local or cross domain)
+   * For loading external scripts (local or cross domain with CORS)
    * @param {string} url (see `requireScript`)
    * @param {string} name (see `requireScript`)
    * @param {string} version (see `requireScript`)
@@ -100,7 +100,7 @@ function _injectScript(content, name, version, callback) {
  * If the script is present in the localStorage it will be injected (see `_injectScript`) into the DOM.
  * @param {string} name identifier of the script in the local cache
  * @param {string} version version string that is used to check if the script needs to be updated
- * @param {string} url  `path/to/script.js` that should be caced; can be local or cross domain
+ * @param {string} url  `path/to/script.js` that should be caced; can be local (or cross domain with CORS header allowing cross domain access)
  * @param {Function} callback function that is extecuted once the script is loaded
  */
 function requireScript(name, version, url, callback) {

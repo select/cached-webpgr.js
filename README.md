@@ -32,6 +32,9 @@ Copy the code from `chached-webpgr.min.js` into your .html file (loading it from
 
 This code __will only work on a server__, file:// is not supported.
 
+Caching of scripts cross domain only works if the CORS header is set on the remote server.
+
+
 ## API Reference
 
 ```javascript
