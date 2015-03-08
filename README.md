@@ -3,10 +3,10 @@
 This tiny library uses the Web Storage (localStorage) to cache JavaScrip files. Cached files will be loaded much faster than requesting them from a server (even local ones). <br>
   My test showed: 
   
-| | |
-|---|---|
-|Loading jQuery from CDN  | __268ms__|
-|Loading jQuery from localStorage  | __47ms__ |
+| | Chrome | FireFox |
+|---|---|---|
+|Loading jQuery from CDN  | __268ms__| __200ms__|
+|Loading jQuery from localStorage  | __47ms__ | __14ms__|
 
 The library is so simple that you can read and understand all of its code!
 
