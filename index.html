@@ -7,107 +7,14 @@
   <title></title>
   <script type="text/javascript">
   var t1 = new Date();
-/*
- * http://webpgr.com - Falko Krause
- * Author: Webpgr UG (haftungsbeschraenkt) <falko@webpgr.com>
+/* 
+ * cached-webpgr.js - simple localStorage based caching of JavaScript files
+ * https://github.com/webpgr/cached-webpgr.js
+ * Author: Webpgr http://webpgr.com by Falko Krause <falko@webpgr.com>
  * License: MIT
  */
 
-  /**
-   * ##_cacheScript
-   * This function requires IE7+, Firefox, Chrome, Opera, Safari. 
-   * It will make an ajax call to retrive the desired script from the provided url and store it 
-   * in the localStorage under the provided name. The stored script will be wrapped like in this example:
-   * `{content: '// scrip content $(document).ready(...)', version: '1.02.03'}`
-   * @param {string} name localStorage identifier; shoud be the same as on the server-side 
-   * @param {string} url `path/to/script.js`; shoud be the same as on the server-side 
-   */
-  function _cacheScript(name, version, url) {
-    var xmlhttp = new XMLHttpRequest(); // code for IE7+, Firefox, Chrome, Opera, Safari
-    xmlhttp.onreadystatechange = function() {
-      if (xmlhttp.readyState == 4) {
-        if (xmlhttp.status == 200) {
-          localStorage.setItem(name, JSON.stringify({content: xmlhttp.responseText, version: version }));
-        } else {
-          console.warn('something else other than 200 was returned');
-        }
-      }
-    }
-    xmlhttp.open("GET", url, true);
-    xmlhttp.send();
-  }
-  /**
-   * ##_loadScript
-   * For loading external scripts (local or cross domain)
-   * @param {string} url (see `requireScript`)
-   * @param {string} name (see `requireScript`)
-   * @param {string} version (see `requireScript`)
-   * @param {Function} callback (see `requireScript`)
-   */
-  function _loadScript(url, name, version, callback) {
-    var s = document.createElement('script');
-    
-    if (s.readyState) { //IE
-      s.onreadystatechange = function() {
-        if (s.readyState == "loaded" || s.readyState == "complete") {
-          s.onreadystatechange = null;
-          _cacheScript(name, version, url);
-          if (callback) callback();
-        }
-      };
-    } else { //Others
-      s.onload = function() {
-        _cacheScript(name, version, url);
-        if (callback) callback();
-      };
-    }
-    
-    s.setAttribute("src", url); 
-    document.getElementsByTagName("head")[0].appendChild(s)
-  }
-  
-  /**
-   * ##_injectScript
-   * Injects a script loaded from localStorage into the DOM.
-   * If the script version is differnt than the requested one, the localStorage key is cleared and a new version will be loaded next time. 
-   * @param {object} content wrapped serialized code `{content: '// scrip content $(document).ready(...)', version: '1.02.03'}`
-   * @param {string} name (see `requireScript`)
-   * @param {string} version (see `requireScript`)
-   * @param {Function} callback (see `requireScript`)
-   */
-  function _injectScript(content, name, version, callback){
-    var s = document.createElement('script');
-    s.type = "text/javascript";
-    var c = JSON.parse(content)
-    var scriptContent = document.createTextNode(c.content);
-    s.appendChild(scriptContent);
-    document.getElementsByTagName("head")[0].appendChild(s)
-    
-    // cached version is not the request version, clear the cache, this will trigger a reload next time
-    if(c.version != version){
-      localStorage.removeItem(name);
-    }
-    
-    if(callback) callback();
-  }
-
-  /**
-   * ##requireScript
-   * If the requested script is not available in the localStorage it will be loaded from the provided url (see `_loadScript`).
-   * If the script is present in the localStorage it will be injected (see `_injectScript`) into the DOM.   
-   * @param {string} name identifier of the script in the local cache
-   * @param {string} version version string that is used to check if the script needs to be updated
-   * @param {string} url  `path/to/script.js` that should be caced; can be local or cross domain
-   * @param {Function} callback function that is extecuted once the script is loaded
-   */
-  function requireScript(name, version, url, callback) {
-    var c = localStorage.getItem(name);
-    if (c == null) {
-      _loadScript(url, name, version, callback);
-    } else {
-      _injectScript(c, name, version, callback);
-    }
-  }
+function _cacheScript(c,d,e){var a=new XMLHttpRequest;a.onreadystatechange=function(){4==a.readyState&&(200==a.status?localStorage.setItem(c,JSON.stringify({content:a.responseText,version:d})):console.warn("error loading "+e))};a.open("GET",e,!0);a.send()}function _loadScript(c,d,e,a){var b=document.createElement("script");b.readyState?b.onreadystatechange=function(){if("loaded"==b.readyState||"complete"==b.readyState)b.onreadystatechange=null,_cacheScript(d,e,c),a&&a()}:b.onload=function(){_cacheScript(d,e,c);a&&a()};b.setAttribute("src",c);document.getElementsByTagName("head")[0].appendChild(b)}function _injectScript(c,d,e,a){var b=document.createElement("script");b.type="text/javascript";c=JSON.parse(c);var f=document.createTextNode(c.content);b.appendChild(f);document.getElementsByTagName("head")[0].appendChild(b);c.version!=e&&localStorage.removeItem(d);a&&a()}function requireScript(c,d,e,a){var b=localStorage.getItem(c);null==b?_loadScript(e,c,d,a):_injectScript(b,c,d,a)};
 
   // ---
   

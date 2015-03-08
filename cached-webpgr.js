@@ -1,13 +1,15 @@
-/*
- * http://webpgr.com - Falko Krause
+/* 
+ * cached-webpgr.js - simple localStorage based caching of JavaScript files
+ * https://github.com/webpgr/cached-webpgr.js
+ * Author: Webpgr http://webpgr.com by Falko Krause <falko@webpgr.com>
+ * License: MIT
+ * 
  * usage example:
  *  ```
  *  requireScript('jquery', '1.11.2', 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js', function(){
  *    requireScript('examplejs', '0.0.3', 'example.js');
  *  });
  *  ```
- * Author: Webpgr UG (haftungsbeschraenkt) <falko@webpgr.com>
- * License: MIT
  */
 
 
