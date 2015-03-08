@@ -2,6 +2,7 @@
 
 This tiny library uses the Web Storage (localStorage) to cache JavaScrip files. Cached files will be loaded much faster than requesting them from a server (even local ones). <br>
   My test showed: 
+  
 | | |
 |-|-|
 |Loading jQuery from CDN  | 268ms|
@@ -34,8 +35,8 @@ requireScript(name, version, url, callback)
 ```
 provides the external API. The internal API consits of 3 functions.
 ```javascript
-_injectScript(content, name, version, callback)
 _loadScript(url, name, version, callback)
+_injectScript(content, name, version, callback)
 _cacheScript(name, version, url)
 ```
 Please check the code to learn how they work (they are very short!).
