@@ -89,6 +89,7 @@ function _injectScript(content, name, version, callback) {
   // cached version is not the request version, clear the cache, this will trigger a reload next time
   if (c.version != version) {
     localStorage.removeItem(name);
+    
   }
 
   if (callback) callback();
