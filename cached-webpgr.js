@@ -1,9 +1,9 @@
-/* 
+/*
  * cached-webpgr.js - simple localStorage based caching of JavaScript files
  * https://github.com/webpgr/cached-webpgr.js
  * Author: Webpgr http://webpgr.com by Falko Krause <falko@webpgr.com>
  * License: MIT
- * 
+ *
  * usage example:
  *  ```
  *  requireScript('jquery', '1.11.2', 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js', function(){
@@ -78,20 +78,19 @@ function _loadScript(url, name, version, callback) {
  * @param {string} version (see `requireScript`)
  * @param {Function} callback (see `requireScript`)
  */
-function _injectScript(content, name, version, callback) {
-  var s = document.createElement('script');
-  s.type = "text/javascript";
-  var c = JSON.parse(content)
-  var scriptContent = document.createTextNode(c.content);
-  s.appendChild(scriptContent);
-  document.getElementsByTagName("head")[0].appendChild(s)
-
+function _injectScript(content, url, name, version, callback) {
+  var c = JSON.parse(content);
   // cached version is not the request version, clear the cache, this will trigger a reload next time
   if (c.version != version) {
     localStorage.removeItem(name);
-    
+    _loadScript(url, name, version, callback);
+    return;
   }
-
+  var s = document.createElement('script');
+  s.type = "text/javascript";
+  var scriptContent = document.createTextNode(c.content);
+  s.appendChild(scriptContent);
+  document.getElementsByTagName("head")[0].appendChild(s);
   if (callback) callback();
 }
 
@@ -109,6 +108,6 @@ function requireScript(name, version, url, callback) {
   if (c == null) {
     _loadScript(url, name, version, callback);
   } else {
-    _injectScript(c, name, version, callback);
+    _injectScript(c, url, name, version, callback);
   }
 }
