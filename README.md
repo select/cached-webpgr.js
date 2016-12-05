@@ -17,7 +17,7 @@ The library is so simple that you can read and understand all of its code!
     requireScript('examplejs', '0.0.3', 'example.js');
   });
 ```
-In this example I cache jQuery and a local file that is dependent on jQuery. On the first load it will be loaded from the provided URL and on the second load it will be loaded from the localStorage. Changing the version string will cause the cache to be cleared (1st load) and a new version to be loaded from the sever (2nd load). Since the `example.js` is dependen on jQuery I load it in the callback that is triggered after loading jQuery.
+In this example I cache jQuery and a local file that is dependent on jQuery. On the first load it will be loaded from the provided URL and on the second load it will be loaded from the localStorage. Changing the version string will cause the cache to be cleared and re-loaded from the sever. Since the `example.js` is dependen on jQuery I load it in the callback that is triggered after loading jQuery.
 
 
 ## Motivation
